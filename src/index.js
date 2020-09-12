@@ -1,5 +1,5 @@
 'use strict'
-import '../assests/styles/main.css'
+import '../assests/styles/main.scss'
 
 import * as routing from './router'
 
