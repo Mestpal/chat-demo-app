@@ -1,14 +1,19 @@
-.navbar {
+body {
+  margin: 0;
   width: 100%;
-  background-color: #555;
-  overflow: auto;
-  color: white;
-  font-size: 16px;
-}
 
-.profile__image{
-  img {
-    max-width: 100%;
-    height: auto;
+  .navbar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+    color: white;
+    font-size: 16px;
+  }
+
+  .profile__image{
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 }
