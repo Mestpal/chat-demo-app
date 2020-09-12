@@ -1,4 +1,6 @@
 'use strict'
+import '../assests/styles/main.css'
+
 import * as routing from './router'
 
 (function (){
