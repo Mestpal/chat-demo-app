@@ -8,12 +8,35 @@ body {
     overflow: auto;
     color: white;
     font-size: 16px;
+    margin: auto;
+    display: flex;
+    align-items: center;
   }
 
-  .profile__image{
+  .profile__image {
+    align-content: center;
+    display: flex;
+    margin: 10px auto;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 50%;
+
     img {
-      max-width: 100%;
-      height: auto;
+      width: auto;
+      height: 100%;
+      margin-left: -50px;
     }
+  }
+}
+
+.btn {
+  margin: 10px;
+
+  &--transparent {
+    @extend .btn;
+    background-color: transparent;
+    border: none;
   }
 }
