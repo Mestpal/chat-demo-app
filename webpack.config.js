@@ -19,10 +19,6 @@ module.exports = {
         }
       },
       {
-        test: /\.html$/i,
-        loader: 'html-loader',
-      },
-      {
         test:  /\.s[ac]ss$/i,
         use: [
           'style-loader',
@@ -33,7 +29,14 @@ module.exports = {
     ]
   },
   output: {
-    filename: 'main.js',
+    filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist'),
-  }
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      inject: true
+    })
+  ]
 }
