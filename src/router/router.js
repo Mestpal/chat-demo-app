@@ -12,10 +12,8 @@ export default function Router (routes) {
 
 Router.prototype = {
   routes: undefined,
-  root: undefined,
   constructor (routes) {
     this.routes = routes
-    this.root = document.getElementById('app')
   },
   init () {
     (function (scope, r) {
@@ -29,28 +27,31 @@ Router.prototype = {
     if (window.location.hash.length > 0) {
       routes.map((route) => {
         if (route.isActualRoute(window.location.hash.substr(1))) {
-          scope.goToNewRoute(route.htmlName)
+          scope.showSelectedSection(route.name)
         }
       })
     } else {
       routes.map((route) => {
-        if (route.default) {
-          scope.goToNewRoute(route.htmlName)
+        if (route.defaultRoute) {
+          scope.showSelectedSection(route.name)
         }
       })
     }
   },
-  goToNewRoute (htmlName) {
-    (function (scope) {
-      const url = `views/${htmlName}`
-      const request = new XMLHttpRequest()
-      request.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-          scope.root.innerHTML = this.responseText
-        }
+  showSelectedSection (sectionName) {
+    let sections = document.getElementsByTagName('section')
+
+    if (!sections.length) return
+
+    for (const index in sections) {
+      const item = sections.item(index)
+      const node = document.getElementById(item.id)
+
+      if (item.id === sectionName) {
+        node.setAttribute('class', 'section section--active')
+      } else {
+        node.setAttribute('class', 'section')
       }
-      request.open('GET', url, true)
-      request.send()
-    })(this)
+    }
   }
 }

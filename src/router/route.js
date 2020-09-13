@@ -1,11 +1,11 @@
  'use strict'
 
- export default function Route(name, htmlName, defaultRoute) {
+ export default function Route(name, defaultRoute) {
     try {
-      if (!name || !htmlName) {
+      if (!name) {
         throw ('Mandatory params for Route are missing')
       }
-      this.constructor (name, htmlName, defaultRoute)
+      this.constructor (name, defaultRoute)
     } catch (error) {
       console.log(error)
     }
@@ -13,11 +13,9 @@
 
  Route.prototype = {
   name: undefined,
-  htmlName: undefined,
   defaultRoute: undefined,
-  constructor (name, htmlName, defaultRoute) {
+  constructor (name, defaultRoute) {
     this.name = name
-    this.htmlName = htmlName
     this.defaultRoute = defaultRoute
   },
   isActualRoute (location) {
