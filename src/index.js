@@ -15,8 +15,15 @@ import * as routing from './router'
   document.addEventListener('click', clickAddFriend)
   function clickAddFriend (event) {
     let element = event.target
-      if (element.classList.contains('btn') && element.innerText === "ADD AS FRIEND") {
-        console.log('clickAddFriend')
+    if (element.classList.contains('btn') && element.innerText === "ADD AS FRIEND") {
+        const profilePage = document.getElementsByClassName('page__profile')[0]
+        if (profilePage.classList.contains('page__profile--alt')) {
+          profilePage.setAttribute('class', 'page__profile')
+          element.setAttribute('class', 'btn')
+        } else {
+          profilePage.setAttribute('class', 'page__profile page__profile--alt')
+          element.setAttribute('class', 'btn btn--alt')
+        }
       }
   }
 }())
