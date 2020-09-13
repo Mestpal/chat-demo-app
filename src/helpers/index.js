@@ -1,3 +1,3 @@
-import listenersModule from './events'
+import listenersModule from './listenersModule'
 
 export {listenersModule}
