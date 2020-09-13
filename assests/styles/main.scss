@@ -1,9 +1,4 @@
-$text-color: #606060;
-$text-color-ligther: #6f6d6e;
-$text-color-subtitle: #fa568c;
-$status-online: #5aec90;
-$background-color-app: #edebec;
-$button-color-primary: #3c3c3c;
+@import 'variables';
 
 body {
   margin: 0;
@@ -12,6 +7,33 @@ body {
   flex-direction: column;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: $background-color-app;
+
+  .actions {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .description {
+    padding: 10px;
+
+    &__title {
+      color: $text-color;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    &__location {
+      color: $text-color-subtitle;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    &__info {
+      color: $text-color-ligther;
+      margin: 10px 0;
+    }
+  }
 
   .navbar {
     width: 100%;
@@ -23,6 +45,14 @@ body {
     display: flex;
     align-items: center;
     font-weight: bolder;
+  }
+
+  .page {
+    &__profile {
+      &--alt {
+        background-color: $background-color-alt
+      }
+    }
   }
 
   .profile {
@@ -60,45 +90,23 @@ body {
       text-align: center;
     }
   }
-
-  .description {
-    padding: 10px;
-
-    &__title {
-      color: $text-color;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    &__location {
-      color: $text-color-subtitle;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    &__info {
-      color: $text-color-ligther;
-      margin: 10px 0;
-    }
-  }
-
-  .actions {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-  }
 }
 
 .btn {
-  background-color: $button-color-primary;
+  background-color: $button-color;
   color: #bababa;
   border: 1px thistle;
   padding: 15px 30px;
 
   &--transparent {
-    @extend .btn;
     padding: 10px;
     background-color: transparent;
     border: none;
+  }
+
+  &--alt {
+    background-color: $button-color-alt;
+    color: $text-color;
+    font-weight: bold;
   }
 }
