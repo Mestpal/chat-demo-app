@@ -1,8 +1,17 @@
+$text-color: #606060;
+$text-color-ligther: #6f6d6e;
+$text-color-subtitle: #fa568c;
+$status-online: #5aec90;
+$background-color-app: #edebec;
+$button-color-primary: #3c3c3c;
+
 body {
   margin: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: $background-color-app;
 
   .navbar {
     width: 100%;
@@ -13,20 +22,22 @@ body {
     margin: auto;
     display: flex;
     align-items: center;
+    font-weight: bolder;
   }
 
   .profile {
     padding: 10px 0;
+    display: flex;
+    flex-direction: column;
 
     &__card {
+      margin: 10px 0;
       display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     &__image {
-      align-content: center;
-      display: flex;
-      margin: 0 auto;
-      position: relative;
       width: 50vmin;
       height: 50vmin;
       overflow: hidden;
@@ -40,23 +51,53 @@ body {
     }
 
     &__state {
-      background-color: greenyellow;
+      background-color: $status-online;
+      color: white;
       border-radius: 50%;
-      text-align: center;
       width: 50px;
-      float: right;
       height: 50px;
-      position: relative;
-      right: 22vw;
+      font-size: 14px;
+      text-align: center;
     }
+  }
+
+  .description {
+    padding: 10px;
+
+    &__title {
+      color: $text-color;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    &__location {
+      color: $text-color-subtitle;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    &__info {
+      color: $text-color-ligther;
+      margin: 10px 0;
+    }
+  }
+
+  .actions {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
   }
 }
 
 .btn {
-  margin: 10px;
+  background-color: $button-color-primary;
+  color: #bababa;
+  border: 1px thistle;
+  padding: 15px 30px;
 
   &--transparent {
     @extend .btn;
+    padding: 10px;
     background-color: transparent;
     border: none;
   }
