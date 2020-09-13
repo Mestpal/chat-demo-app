@@ -42,14 +42,26 @@
   <section id="chat">
     <div class="page__chat">
       <div class="navbar">
-        <div>
+        <a href="#profile" class="btn__navbar">
+          <i class="material-icons">keyboard_arrow_left</i>
+        </a>
+        <span class="navbar__title">  Profile Name  </span>
+        <!-- <div>
           <a href="#profile">
-            <button type="button" class="btn btn--transparent">
+            <button type="button" class="btn__navbar">
               <i class="material-icons">keyboard_arrow_left</i>
             </button>
           </a>
         </div>
-        <div class="navbar__title"> Profile Name </div>
+        <div class="navbar__title"> Profile Name </div> -->
+      </div>
+      <div class="chat">
+        <div id="conversation" class="chat__conversation">
+
+        </div>
+        <div class="chat__actions">
+          <input type="text" placeholder="write a text">
+        </div>
       </div>
     </div>
   </section>
