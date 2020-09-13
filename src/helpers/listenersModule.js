@@ -1,7 +1,11 @@
-export default function listenersModule() {
+export default function listeners() {
   (() => {
-    console.log('pepe')
-    document.addEventListener('click', clickAddFriend)
+    document.getElementsByName('addAsFriend').forEach((element) => {
+      element.onclick = clickAddFriend
+    });
+    document.getElementsByName('sendMessage').forEach((element) => {
+      element.onclick = sendMessage
+    });
 
     if (localStorage.getItem('friendStatus')) {
       let buttons = document.getElementsByName('addAsFriend')
@@ -12,19 +16,20 @@ export default function listenersModule() {
   })()
 }
 
-function clickAddFriend (event) {
-  let target = event.target
-  if (target.classList.contains('btn') && target.innerText === "ADD AS FRIEND") {
-    if(localStorage.getItem('friendStatus') === 'true') {
-      localStorage.setItem('friendStatus', 'false')
-    } else {
-      localStorage.setItem('friendStatus', 'true')
-    }
-    updateProfile(JSON.parse(localStorage.getItem('friendStatus')), target)
+let clickAddFriend = function (event) {
+  if(localStorage.getItem('friendStatus') === 'true') {
+    localStorage.setItem('friendStatus', 'false')
+  } else {
+    localStorage.setItem('friendStatus', 'true')
   }
+  updateProfile(JSON.parse(localStorage.getItem('friendStatus')), event.target)
 }
 
-function updateProfile (friendStatus, target = null) {
+let sendMessage = function (event) {
+  console.log(document.getElementsByTagName('input').item(0).value)
+}
+
+let updateProfile = function (friendStatus, target = null) {
   const profilePage = document.getElementsByClassName('page__profile')[0]
 
   if (JSON.parse(friendStatus) ) {
@@ -35,3 +40,5 @@ function updateProfile (friendStatus, target = null) {
     target ? target.setAttribute('class', 'btn') : ''
   }
 }
+
+export { listeners, clickAddFriend, sendMessage, updateProfile }

@@ -6,7 +6,7 @@ import * as helpers from './helpers'
 
 (function (){
   function init () {
-    helpers.listenersModule()
+    helpers.listenersModule.listeners()
 
     var router = new routing.Router([
       new routing.Route('profile', true),

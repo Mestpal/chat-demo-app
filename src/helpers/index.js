@@ -1,3 +1,3 @@
-import listenersModule from './listenersModule'
+import * as listenersModule from './listenersModule'
 
-export {listenersModule}
+export { listenersModule }
