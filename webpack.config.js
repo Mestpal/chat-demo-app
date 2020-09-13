@@ -1,11 +1,15 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
   devServer: {
     contentBase: './dist',
   },
-  entry: './src/index.js',
+  entry: {
+    app: path.resolve(__dirname, '.', 'src', 'index.js')
+  },
   module: {
     rules: [
       {
