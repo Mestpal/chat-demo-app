@@ -11,4 +11,12 @@ import * as routing from './router'
     ])
   }
   init()
+
+  document.addEventListener('click', clickAddFriend)
+  function clickAddFriend (event) {
+    let element = event.target
+      if (element.classList.contains('btn') && element.innerText === "ADD AS FRIEND") {
+        console.log('clickAddFriend')
+      }
+  }
 }())
