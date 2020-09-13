@@ -45,22 +45,24 @@ body {
 
   .navbar {
     width: 100%;
-    height: 50px;
+    height: 60px;
     background-color: #555;
     overflow: auto;
     font-size: 16px;
     display: flex;
     align-items: center;
     font-weight: bolder;
-    padding: 10px;
 
     &__title {
+      @extend .navbar;
       color: white;
+      justify-content: center;
     }
   }
 
   .page {
     width: 100%;
+    height: 100vh;
 
     &__profile {
       @extend .page;
