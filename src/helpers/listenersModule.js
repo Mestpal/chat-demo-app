@@ -1,11 +1,14 @@
+import * as chat from './chatModule'
+
 export default function listeners() {
   (() => {
     document.getElementsByName('addAsFriend').forEach((element) => {
       element.onclick = clickAddFriend
-    });
+    })
+
     document.getElementsByName('sendMessage').forEach((element) => {
-      element.onclick = sendMessage
-    });
+      element.onclick = chat.sendMessage
+    })
 
     if (localStorage.getItem('friendStatus')) {
       let buttons = document.getElementsByName('addAsFriend')
@@ -25,12 +28,8 @@ let clickAddFriend = function (event) {
   updateProfile(JSON.parse(localStorage.getItem('friendStatus')), event.target)
 }
 
-let sendMessage = function (event) {
-  console.log(document.getElementsByTagName('input').item(0).value)
-}
-
 let updateProfile = function (friendStatus, target = null) {
-  const profilePage = document.getElementsByClassName('page__profile')[0]
+  const profilePage = document.getElementsByClassName('page__profile').item(0)
 
   if (JSON.parse(friendStatus) ) {
     profilePage.setAttribute('class', 'page__profile page__profile--alt')
@@ -41,4 +40,4 @@ let updateProfile = function (friendStatus, target = null) {
   }
 }
 
-export { listeners, clickAddFriend, sendMessage, updateProfile }
+export { listeners, clickAddFriend, updateProfile }
