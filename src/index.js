@@ -11,8 +11,15 @@ import Chat from './chat'
 
     var chat = new Chat(JSON.parse(localStorage.getItem('conversation')))
 
-    document.getElementsByName('sendMessage').forEach((element) => {
-      element.onclick = chat.sendMessage
+    window.addEventListener('hashchange', (e) => {
+      const timer = setTimeout(() => {
+        if(window.location.hash.substr(1) === 'chat') {
+          const randomMessage = chat.createMessage('lol', 'friend')
+          chat.updateChatHistory(randomMessage)
+          chat.renderChatConversation(JSON.parse(localStorage.getItem('conversation')))
+        }
+        clearTimeout(timer)
+      }, 500)
     })
 
     var router = new routing.Router([

@@ -16,7 +16,9 @@ Chat.prototype = {
     (function (scope) {
       document.getElementsByName('sendMessage').forEach((element) => {
         element.addEventListener('click', (e) => {
-          const newMessage = scope.createMessage(document.getElementsByTagName('input').item(0))
+          const input = document.getElementsByTagName('input').item(0)
+          const newMessage = scope.createMessage(input.value)
+          input.value = ''
 
           if (newMessage) {
             scope.updateChatHistory(newMessage)
@@ -29,11 +31,10 @@ Chat.prototype = {
 
     this.renderChatConversation(JSON.parse(localStorage.getItem('conversation')))
   },
-  createMessage(input) {
-    if(!input.value) return
+  createMessage(input, user = 'me') {
+    if(!input) return
 
-    const message = {id: Date.now(), user: 'me', text: input.value}
-    input.value = ''
+    const message = {id: Date.now(), user: user, text: input}
 
     return message
   },

@@ -50,6 +50,12 @@ body {
         margin: 20px 0;
         font-size: 18px;
       }
+
+      &--friend {
+        @extend .chat__messages--me;
+        background-color: $background-color-alt;
+        color: white;
+      }
     }
   }
 
