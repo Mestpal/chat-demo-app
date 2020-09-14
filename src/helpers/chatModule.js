@@ -38,13 +38,20 @@ function renderChatConversation (conversation) {
         let entry = document.createElement('li')
         entry.id = message.id
         entry.textContent = message.text
-        entry.setAttribute('class', `chat__messages chat__messages--${message.user}`)
+        entry.setAttribute('class', `chat__messages chat__messages--${message.user} chatMessage` )
         messagesBox.appendChild(entry)
+        scrollToLast('chatMessage')
       }
     })
   } catch (error) {
     console.log(error)
   }
+}
+
+function scrollToLast(className) {
+  let msn = document.getElementsByClassName(className)
+  let last = msn[msn.length-1]
+  last.scrollIntoView()
 }
 
 export {sendMessage, renderChatConversation}
