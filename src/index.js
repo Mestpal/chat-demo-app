@@ -14,9 +14,10 @@ import Chat from './chat'
     window.addEventListener('hashchange', (e) => {
       const timer = setTimeout(() => {
         if(window.location.hash.substr(1) === 'chat') {
-          const randomMessage = chat.createMessage('lol', 'friend')
+          const randomMessage = chat.createMessage(Math.random().toString(36).substr(2, 5), 'friend')
           chat.updateChatHistory(randomMessage)
           chat.renderChatConversation(JSON.parse(localStorage.getItem('conversation')))
+          chat.scrollToLast('chatMessage')
         }
         clearTimeout(timer)
       }, 500)
