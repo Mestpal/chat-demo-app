@@ -1,13 +1,7 @@
-import * as chat from './chatModule'
-
 export default function listeners() {
   (() => {
     document.getElementsByName('addAsFriend').forEach((element) => {
       element.onclick = clickAddFriend
-    })
-
-    document.getElementsByName('sendMessage').forEach((element) => {
-      element.onclick = chat.sendMessage
     })
 
     if (localStorage.getItem('friendStatus')) {
