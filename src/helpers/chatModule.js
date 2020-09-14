@@ -38,7 +38,7 @@ function renderChatConversation (conversation) {
         let entry = document.createElement('li')
         entry.id = message.id
         entry.textContent = message.text
-        entry.setAttribute('class', message.user)
+        entry.setAttribute('class', `chat__messages chat__messages--${message.user}`)
         messagesBox.appendChild(entry)
       }
     })

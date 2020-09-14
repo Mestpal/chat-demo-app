@@ -40,6 +40,17 @@ body {
       overflow-y: scroll;
       margin-bottom: 20px;
     }
+
+    &__messages {
+      &--me {
+        background-color: white;
+        width: 80%;
+        padding: 15px;
+        border-radius: 6px;
+        margin: 20px 0;
+        font-size: 18px;
+      }
+    }
   }
 
   .description {
