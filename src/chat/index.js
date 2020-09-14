@@ -14,22 +14,32 @@ Chat.prototype = {
   },
   init () {
     (function (scope) {
+      document.getElementsByTagName('input').item(0).addEventListener('keyup', (e) => {
+        if (event.keyCode === 13) {
+          const input = document.getElementsByTagName('input').item(0)
+          scope.sendMessage(scope, input)
+        }
+      })
+
       document.getElementsByName('sendMessage').forEach((element) => {
         element.addEventListener('click', (e) => {
           const input = document.getElementsByTagName('input').item(0)
-          const newMessage = scope.createMessage(input.value)
-          input.value = ''
-
-          if (newMessage) {
-            scope.updateChatHistory(newMessage)
-            scope.renderChatConversation(JSON.parse(localStorage.getItem('conversation')))
-            scope.scrollToLast('chatMessage')
-          }
+          scope.sendMessage(scope, input)
         })
       })
     })(this)
 
     this.renderChatConversation(JSON.parse(localStorage.getItem('conversation')))
+  },
+  sendMessage(scope, event){
+    const newMessage = scope.createMessage(event.value)
+    event.value = ''
+
+    if (newMessage) {
+      scope.updateChatHistory(newMessage)
+      scope.renderChatConversation(JSON.parse(localStorage.getItem('conversation')))
+      scope.scrollToLast('chatMessage')
+    }
   },
   createMessage(input, user = 'me') {
     if(!input) return
