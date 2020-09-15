@@ -3,6 +3,7 @@
 
 .section {
   display: none;
+  height: 100vh;
 
   &--active {
     display: flex;
@@ -42,7 +43,7 @@ body {
     }
 
     &__conversation {
-      max-height: 75vh;
+      height: 75vh;
       overflow-y: scroll;
       margin-bottom: 20px;
       width: 100vw;
