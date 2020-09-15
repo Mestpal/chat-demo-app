@@ -79,6 +79,10 @@ Chat.prototype = {
         entry.id = message.id
         entry.textContent = message.text
         entry.setAttribute('class', `chat__messages chat__messages--${message.user} chatMessage` )
+
+        let img = document.createElement('div')
+        img.setAttribute('class', `chat__messages_image chat__messages__image--${message.user}`)
+        entry.appendChild(img)
         messagesBox.appendChild(entry)
       }
     })
