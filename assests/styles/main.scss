@@ -33,7 +33,8 @@ body {
 
     ul {
       list-style-type: none;
-      width: 60vw;
+      width: 50vw;
+      padding: 0px;
 
       li {
         word-wrap: break-word;
@@ -41,9 +42,12 @@ body {
     }
 
     &__conversation {
-      height: 75vh;
+      max-height: 75vh;
       overflow-y: scroll;
       margin-bottom: 20px;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
     }
 
     &__messages {
@@ -60,6 +64,27 @@ body {
         }
         background-color: $background-color-alt;
         color: white;
+      }
+
+      &__image {
+        &--me {
+          width: 50px;
+          height: 50px;
+          background-color: azure;
+          position: relative;
+          display: flex;
+          right: 85px;
+          border-radius: 50%;
+          bottom: 25px;
+          background-image: url(../images/husky-small.jpg);
+        }
+        &--friend {
+          @extend .chat__messages__image--me;
+          background-color: yellowgreen;
+          right: calc(-100% - 30px);
+          bottom: 25px;
+          background-image: url(../images/husky-girl-small.jpg);
+        }
       }
     }
   }
@@ -107,7 +132,6 @@ body {
 
   .page {
     width: 100%;
-    height: 100vmax;
 
     &__profile {
       @extend .page;
