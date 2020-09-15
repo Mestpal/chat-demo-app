@@ -5,7 +5,7 @@
   "description": "small chat app demo spa done in JS",
   "main": "main.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "dev": "webpack-dev-server --hot --inline --config webpack.config.js",
     "build": "webpack"
   },

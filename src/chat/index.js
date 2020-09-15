@@ -42,7 +42,7 @@ Chat.prototype = {
     }
   },
   createMessage(input, user = 'me') {
-    if(!input) return
+    if(!input) return null
 
     const message = {id: Date.now(), user: user, text: input}
 
