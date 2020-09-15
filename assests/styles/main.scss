@@ -34,6 +34,10 @@ body {
     ul {
       list-style-type: none;
       width: 60vw;
+
+      li {
+        word-wrap: break-word;
+      }
     }
 
     &__conversation {
