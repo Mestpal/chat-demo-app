@@ -80,8 +80,11 @@ Chat.prototype = {
         entry.textContent = message.text
         entry.setAttribute('class', `chat__messages chat__messages--${message.user} chatMessage` )
 
-        let img = document.createElement('div')
+        let img = document.createElement('a')
         img.setAttribute('class', `chat__messages_image chat__messages__image--${message.user}`)
+
+        if(message.user === 'friend') img.href = '#profile'
+
         entry.appendChild(img)
         messagesBox.appendChild(entry)
       }
