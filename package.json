@@ -5,7 +5,7 @@
   "description": "small chat app demo spa done in JS",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "webpack-dev-server --hot --inline --config webpack.config.js",
     "build": "webpack"
   },
@@ -26,6 +26,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.3.0",
     "file-loader": "^6.1.0",
+    "jest": "^26.4.2",
     "sass": "^1.26.10",
     "sass-loader": "^10.0.2",
     "style-loader": "^1.2.1",
