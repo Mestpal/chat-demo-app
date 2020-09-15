@@ -15,7 +15,7 @@ Chat.prototype = {
   init () {
     (function (scope) {
       document.getElementsByTagName('input').item(0).addEventListener('keyup', (e) => {
-        if (event.keyCode === 13) {
+        if (e.code === 'Enter') {
           const input = document.getElementsByTagName('input').item(0)
           scope.sendMessage(scope, input)
         }
