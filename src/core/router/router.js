@@ -41,7 +41,7 @@ Router.prototype = {
   showSelectedSection (sectionName) {
     let sections = document.getElementsByTagName('section')
 
-    if (!sections.length) return
+    if (!sections.length) return null
 
     for (const index in sections) {
       const item = sections.item(index)
