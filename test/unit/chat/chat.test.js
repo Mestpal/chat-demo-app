@@ -21,11 +21,18 @@ const mockChatList =`
 const chat = new Chat([mockMessage])
 const {JSDOM} = jsdom
 
+beforeEach(() => {
+  const documentHTML = `<!doctype html><html><body></body></html>`
+  const {document} = (new JSDOM(documentHTML)).window
+  global.document = document
+  global.window = document.defaultView
+})
+
 afterEach(() => {
   localStorage.removeItem('conversation')
 })
 
-describe('chat', () => {
+describe('Chat', () => {
 
   test('if is instance of Chat',() => {
     chat.init = jest.fn()
@@ -63,7 +70,7 @@ describe('chat', () => {
     expect(storage).toEqual(expect.arrayContaining([message]))
   })
 
-  test('update chat history when storage exits', () => {
+  test('update chat history when a chat in the storage exits', () => {
     const message = { id: 1, user: 'friend', text: 'pepe'}
     const newMessage = { id: 1, user: 'me', text: 'Test'}
     localStorage.setItem('conversation', JSON.stringify([message]))
@@ -74,9 +81,24 @@ describe('chat', () => {
     expect(storage).toEqual(expect.arrayContaining([message, newMessage]))
   })
 
-  test('scroll to the last message in the chat', () => {
+  test('renderChatConversation does nothing with an empty conversation', () =>{
+     expect(chat.renderChatConversation()).toBeNull
+  })
 
-    const documentHTML = `<!doctype html><html><body>${mockMessage}</body></html>`
+  test('renderChatConversation when a conversatio exits',() =>{
+    global.document.body.innerHTML = mockChatList
+    let messagesBox = window.document.getElementsByClassName('chat__messages').item(0)
+    const initialChildrenCount = messagesBox.children.length
+
+    chat.renderChatConversation([mockMessage])
+    messagesBox = window.document.getElementsByClassName('chat__messages').item(0)
+    const finalChildrenCount = messagesBox.children.length
+
+    expect(finalChildrenCount).toBe(initialChildrenCount + 1)
+  })
+
+  test('scroll to the last message in the chat', () => {
+    const documentHTML = `<!doctype html><html><body></body></html>`
     const {document} = (new JSDOM(documentHTML)).window
     global.document = document
     global.window = document.defaultView

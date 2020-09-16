@@ -61,9 +61,9 @@ Chat.prototype = {
     localStorage.setItem('conversation', JSON.stringify(conversation))
   },
   renderChatConversation (conversation) {
+    if(!conversation) return null
+    
     const messagesBox = document.getElementsByClassName('chat__messages').item(0)
-
-    if(!conversation) return
 
     conversation.map((message) => {
       let isNotRender = true
