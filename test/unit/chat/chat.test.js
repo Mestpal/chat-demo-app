@@ -18,6 +18,8 @@ const mockChatList =`
     </li>
   </ul>
 `
+const mockInput=`<input type="text" placeholder="write a text" value="test">`
+const mockSendMessageButton = `<button type="button" name="sendMessage" class="btn"> Send </button>`
 const chat = new Chat([mockMessage])
 const {JSDOM} = jsdom
 
@@ -118,5 +120,19 @@ describe('Chat', () => {
     expect(document.getElementsByClassName.mock.calls[0][0]).toBe('chatMessage')
     expect(document.getElementsByClassName).toBeCalled()
     expect(last.scrollIntoView).toBeCalled()
+  })
+
+  test('init add the events listeners, and renders conversation', () => {
+    window.document.body.innerHTML = `${mockInput}${mockSendMessageButton}`
+    let input = window.document.getElementsByTagName('input').item(0)
+    let sendButton = window.document.getElementsByName('sendMessage').item(0)
+
+    input.addEventListener = jest.fn()
+    sendButton.addEventListener = jest.fn()
+
+    new Chat()
+
+    expect(input.addEventListener.mock.calls[0][0]).toBe('keyup')
+    expect(sendButton.addEventListener.mock.calls[0][0]).toBe('click')
   })
 })
