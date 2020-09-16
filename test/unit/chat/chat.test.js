@@ -135,4 +135,42 @@ describe('Chat', () => {
     expect(input.addEventListener.mock.calls[0][0]).toBe('keyup')
     expect(sendButton.addEventListener.mock.calls[0][0]).toBe('click')
   })
+
+  test('sendMessage does the complete process', () => {
+    const scope = {
+      createMessage: jest.fn(() => (mockMessage)),
+      updateChatHistory: jest.fn(),
+      renderChatConversation: jest.fn(),
+      scrollToLast: jest.fn()
+    }
+    const event = {
+      value: 'test'
+    }
+
+    chat.sendMessage(scope, event)
+
+    expect(scope.createMessage).toHaveBeenCalled()
+    expect(scope.updateChatHistory).toHaveBeenCalled()
+    expect(scope.renderChatConversation).toHaveBeenCalled()
+    expect(scope.scrollToLast).toHaveBeenCalled()
+  })
+
+  test('sendMessage does nothing when event has not a value', () => {
+    const scope = {
+      createMessage: jest.fn(() => ('')),
+      updateChatHistory: jest.fn(),
+      renderChatConversation: jest.fn(),
+      scrollToLast: jest.fn()
+    }
+    const event = {
+      value: ''
+    }
+
+    chat.sendMessage(scope, event)
+
+    expect(scope.createMessage).toHaveBeenCalled()
+    expect(scope.updateChatHistory).not.toHaveBeenCalled()
+    expect(scope.renderChatConversation).not.toHaveBeenCalled()
+    expect(scope.scrollToLast).not.toHaveBeenCalled()
+  })
 })
