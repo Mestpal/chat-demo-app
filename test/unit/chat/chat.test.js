@@ -1,5 +1,5 @@
 import jsdom from 'jsdom'
-import Chat from '../../../src/chat/index'
+import Chat from '../../../src/core/chat/index'
 
 const mockMessage = {
   id: Date.now,
