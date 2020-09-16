@@ -38,5 +38,13 @@
     "babel-jest": "^26.3.0",
     "html-webpack-plugin": "^4.4.1",
     "lodash": "^4.17.20"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ]
   }
 }
