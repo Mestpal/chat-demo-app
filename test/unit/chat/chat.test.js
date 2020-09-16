@@ -1,3 +1,4 @@
+import jsdom from 'jsdom'
 import Chat from '../../../src/chat/index'
 
 const mockMessage = {
@@ -5,13 +6,27 @@ const mockMessage = {
   user: 'me',
   text: 'test'
 }
+const mockChatList =`
+  <ul class="chat__messages">
+    <li id="1600207870204" class="chat__messages chat__messages--friend chatMessage">
+      nn7wo
+      <a class="chat__messages_image chat__messages__image--friend" href="#profile"></a>
+    </li>
+    <li id="1600207873478" class="chat__messages chat__messages--friend chatMessage">
+      18vpw
+      <a class="chat__messages_image chat__messages__image--friend" href="#profile"></a>
+    </li>
+  </ul>
+`
 const chat = new Chat([mockMessage])
+const {JSDOM} = jsdom
 
 afterEach(() => {
   localStorage.removeItem('conversation')
 })
 
 describe('chat', () => {
+
   test('if is instance of Chat',() => {
     chat.init = jest.fn()
     expect(chat instanceof Chat).toBeTruthy
@@ -57,5 +72,29 @@ describe('chat', () => {
     const storage = JSON.parse(localStorage.getItem('conversation'))
 
     expect(storage).toEqual(expect.arrayContaining([message, newMessage]))
+  })
+
+  test('scroll to the last message in the chat', () => {
+
+    const documentHTML = `<!doctype html><html><body>${mockMessage}</body></html>`
+    const {document} = (new JSDOM(documentHTML)).window
+    global.document = document
+    global.window = document.defaultView
+    global.document.body.innerHTML = mockChatList
+
+
+    document.getElementsByClassName = jest.fn((className) => {
+      return window.document.getElementsByClassName('chatMessage')
+    })
+    let msn = document.getElementsByClassName('chatMessage')
+    let last = msn[msn.length-1]
+
+
+    last.scrollIntoView = jest.fn()
+    last.scrollIntoView()
+
+    expect(document.getElementsByClassName.mock.calls[0][0]).toBe('chatMessage')
+    expect(document.getElementsByClassName).toBeCalled()
+    expect(last.scrollIntoView).toBeCalled()
   })
 })
