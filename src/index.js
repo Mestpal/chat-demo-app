@@ -8,8 +8,12 @@ import * as routing from './core/router'
 import * as helpers from './helpers'
 import Chat from './core/chat'
 
-(function (){
-  function init () {
+function App() {
+  this.init()
+}
+
+App.prototype = {
+  init () {
     helpers.listenersModule.listeners()
 
     var chat = new Chat(JSON.parse(localStorage.getItem('conversation')))
@@ -31,5 +35,6 @@ import Chat from './core/chat'
       new routing.Route('chat')
     ])
   }
-  init()
-}())
+}
+
+new App()
