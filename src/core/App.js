@@ -8,7 +8,7 @@ export default function App() {
 
   App.prototype = {
     init () {
-      helpers.listenersModule.listeners()
+      helpers.friendStatus.listeners()
 
       var chat = new Chat(JSON.parse(localStorage.getItem('conversation')))
 

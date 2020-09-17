@@ -25,7 +25,7 @@ beforeEach(() => {
 
 describe('App', () => {
   test('Init generates the eventListeners and the Router', () => {
-    helpers.listenersModule.listeners = jest.fn()
+    helpers.friendStatus.listeners = jest.fn()
     localStorage.setItem('conversation', JSON.stringify(mockMessage))
     global.window.addEventListener = jest.fn()
     Router.init = jest.fn()
@@ -33,7 +33,7 @@ describe('App', () => {
     new App()
 
     expect(window.addEventListener.mock.calls[0][0]).toBe('hashchange')
-    expect(helpers.listenersModule.listeners).toHaveBeenCalled()
+    expect(helpers.friendStatus.listeners).toHaveBeenCalled()
     expect(global.window.addEventListener).toHaveBeenCalled()
   })
 })

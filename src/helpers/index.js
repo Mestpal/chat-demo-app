@@ -1,3 +1,3 @@
-import * as listenersModule from './friendStatus'
+import * as friendStatus from './friendStatus'
 
-export { listenersModule }
+export { friendStatus }
