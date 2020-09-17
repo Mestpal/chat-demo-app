@@ -34,7 +34,6 @@ let clickAddFriend = function (event) {
 
 let updateProfile = function (friendStatus, target = {}) {
   if (friendStatus) {
-    console.log('pepe')
     target.profilePage.setAttribute('class', 'page__profile page__profile--alt')
     target.friendButton ? target.friendButton.setAttribute('class', 'btn btn--alt') : ''
   } else {
