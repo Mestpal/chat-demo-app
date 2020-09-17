@@ -29,7 +29,6 @@ describe('friendStatus helper', () => {
     let profilePage = window.document.getElementsByClassName('page__profile').item(0)
     let friendStatusButton = window.document.getElementsByName('addAsFriend').item(0)
 
-    console.log(friendStatus.updateProfile)
     friendStatus.updateProfile(true, {
       profilePage: profilePage,
       friendButton: friendStatusButton
@@ -49,8 +48,6 @@ describe('friendStatus helper', () => {
     profilePage.setAttribute('class', 'page__profile page__profile--alt')
     friendStatusButton.setAttribute('class', 'btn btn--alt')
 
-    console.log(profilePage.classList)
-    console.log(friendStatus.updateProfile)
     friendStatus.updateProfile(false, {
       profilePage: profilePage,
       friendButton: friendStatusButton
